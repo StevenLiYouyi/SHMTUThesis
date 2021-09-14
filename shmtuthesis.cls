@@ -1,10 +1,11 @@
 %
-% Email: hellckt@126.com
-% Maintainer: hellckt
+% Email: steven_liyouyi@outlook.com
+% Maintainer: Li Youyi
 %
 % Copyright (C) 2009-2017 by weijianwen <weijianwen@gmail.com>
 %           (C) 2018-2019 by SJTUG
 %           (C) 2020-2020 by hellckt <hellckt@126.com>
+%           (C) 2021- by Li Youyi <steven_liyouyi@outlook.com>
 %
 % This file may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3c
@@ -28,8 +29,8 @@
   prefix=shmtu@,
   setkeys=\kvsetkeys
 }
-% 学位论文类型，目前仅支持硕士论文
-\DeclareStringOption[master]{degree}[master]
+% 学位论文类型，目前仅支持博士论文
+\DeclareStringOption[master]{degree}[doctor]
 % 语言类型
 \DeclareStringOption[chinese]{language}[chinese]
 % 字号
@@ -56,7 +57,7 @@
   }%
 }
 
-\newif\ifshmtu@degree@master
+\newif\ifshmtu@degree@doctor
 \shmtu@validate@key{degree}
 
 \newif\ifshmtu@language@chinese
@@ -89,7 +90,7 @@
 \LoadClass[a4paper, zihao=\shmtu@zihao, linespread=1.3, UTF8]{ctexbook}
 
 % 根据学位导入相应的.ltx文件，可在此处导入制定一的样式文件
-\ifshmtu@degree@master
+\ifshmtu@degree@doctor
   \AtEndOfClass{\input{shmtuthesis-graduate.ltx}}
 \fi
 
@@ -113,7 +114,7 @@
 \RequirePackage{caption}
 \RequirePackage[list=off]{bicaption}
 \RequirePackage{subcaption}
-\RequirePackage[backend=biber, style=\shmtu@bibstyle]{biblatex}
+\RequirePackage[backend=biber, gbpub=false, doi =false, style=\shmtu@bibstyle]{biblatex}
 \RequirePackage{titletoc}
 \RequirePackage[titles]{tocloft}
 \RequirePackage[inline]{enumitem}
@@ -168,7 +169,7 @@
   论文的全部和部分内容，可以采用影印、缩印或者其他复制手段保存论
   文。保密的论文在解密后遵守此规定。}
 \shmtu@def@label{abstractChi}{摘\quad 要}
-\shmtu@def@label{abstractEng}{Abstract}
+\shmtu@def@label{abstractEng}{ABSTRACT}
 \shmtu@def@label{keywordsChi}{关键词：}
 \shmtu@def@label{keywordsEng}{Key words:~}
 \ifshmtu@language@english
@@ -204,7 +205,7 @@
   \shmtu@def@label{nomenclature}{主要符号对照表}
   \shmtu@def@label{acknowledgements}{致\quad 谢}
   \shmtu@def@label{publications}%
-                 {攻读\shmtu@label@degreetypeChi 学位期间已发表或录用的论文}
+                 {攻读\shmtu@label@degreetypeChi 学位期间学术成果}
   \shmtu@def@label{patents}%
                  {攻读\shmtu@label@degreetypeChi 学位期间申请的专利}
   \shmtu@def@label{projects}%
@@ -214,6 +215,8 @@
 \fi
 
 \NewDocumentCommand\shmtuSetLabel{}{\setkeys{shmtulabel}}
+\setCJKmainfont{SimSun}
+
 
 \newif\ifshmtu@xitsnew
 \@ifpackagelater{fontspec}{2017/01/20}{
@@ -415,10 +418,10 @@
 \renewcommand{\floatpagefraction}{0.60}
 
 \AtBeginDocument{%
-  \renewcommand{\theequation}{\thechapter--\arabic{equation}}
-  \renewcommand{\thefigure}{\thechapter--\arabic{figure}}
+  \renewcommand{\theequation}{\thechapter-\arabic{equation}}
+  \renewcommand{\thefigure}{\thechapter-\arabic{figure}}
   \renewcommand{\p@subfigure}{\thefigure}
-  \renewcommand{\thetable}{\thechapter--\arabic{table}}
+  \renewcommand{\thetable}{\thechapter-\arabic{table}}
 }
 
 % 图表双题注
@@ -438,7 +441,7 @@
   {\endgroup}
 \NewDocumentCommand{\shmtuSetFloatFontOn}{}{\shmtu@setfloatfonttrue}
 \NewDocumentCommand{\shmtuSetFloatFontOff}{}{\shmtu@setfloatfontfalse}
-\DeclareCaptionFont{shmtucaptionfont}{\zihao{5}\kaishu}
+\DeclareCaptionFont{shmtucaptionfont}{\zihao{5}\normalfont}
 \DeclareCaptionFont{shmtusubcaptionfont}{\zihao{5}\normalfont}
 \captionsetup{%
   format        = plain,
