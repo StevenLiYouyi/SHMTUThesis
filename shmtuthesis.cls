@@ -215,8 +215,9 @@
 \fi
 
 \NewDocumentCommand\shmtuSetLabel{}{\setkeys{shmtulabel}}
-\setCJKmainfont{SimSun}
-
+\setCJKmainfont{SimSun} %设置中文字体为中文
+\setlength{\abovecaptionskip}{0.cm}  %调整图片标题与图距离
+\setlength{\belowcaptionskip}{-0.5cm}   %调整图片标题与下文距离
 
 \newif\ifshmtu@xitsnew
 \@ifpackagelater{fontspec}{2017/01/20}{
