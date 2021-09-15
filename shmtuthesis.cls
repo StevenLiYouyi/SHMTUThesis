@@ -298,7 +298,7 @@
     titleformat  = {},
     aftername    = \quad,
     afterindent  = true,
-    beforeskip   = 1ex,
+    beforeskip  = {1pt}, 
     afterskip    = 2ex
   },
   section={%
