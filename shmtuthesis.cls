@@ -293,7 +293,7 @@
   
 \ctexset{%
   chapter={%
-    format       = \zihao{3}\bfseries\heiti\centering,
+    format       = \zihao{3}\heiti\centering,
     nameformat   = {},
     titleformat  = {},
     aftername    = \quad,
