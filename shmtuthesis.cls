@@ -216,8 +216,24 @@
 
 \NewDocumentCommand\shmtuSetLabel{}{\setkeys{shmtulabel}}
 \setCJKmainfont{SimSun} %设置中文字体为中文
-\setlength{\abovecaptionskip}{0.cm}  %调整图片标题与图距离
-\setlength{\belowcaptionskip}{-0.5cm}   %调整图片标题与下文距离
+
+\captionsetup[figure]{aboveskip=4pt} %%%图名和图的距离,一定要保留
+\captionsetup[figure]{belowskip=-6pt}
+\setlength{\textfloatsep}{8pt} %%图在一整段文字中间时,与文字的距离
+\setlength{\intextsep}{8pt} %%图在一整段文字上面时,与文字的距离
+\setlength{\floatsep}{12pt} %%图与图之间的距离%
+\setlength{\parskip}{0pt}%{2pt plus2pt minus2pt}
+\captionsetup[table]{aboveskip=2pt} %%%表名和表的距离,一定要保留
+
+
+\AtBeginEnvironment{tabular}{\zihao{5}}
+
+\AtBeginDocument{%
+ \abovedisplayskip=0pt
+ \abovedisplayshortskip=0pt plus 3pt
+ \belowdisplayskip=3pt
+ \belowdisplayshortskip=0pt
+}
 
 \newif\ifshmtu@xitsnew
 \@ifpackagelater{fontspec}{2017/01/20}{
